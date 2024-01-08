@@ -28,7 +28,7 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
         int size = 10,
         bool withDeleted = false,
         bool enableTracking = true,
-        CancellationToken? cancellationToken = default
+        CancellationToken cancellationToken = default
         );
 
     Task<Paginate<TEntity>> GetListByDynamicAsync(
@@ -39,25 +39,25 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
         int size = 10,
         bool withDeleted = false,
         bool enableTracking = true,
-        CancellationToken? cancellationToken = default
+        CancellationToken cancellationToken = default
         );
 
     Task<bool> AnyAsync(
         Expression<Func<TEntity, bool>>? predicate = null,
         bool withDeleted = false,
         bool enableTracking = true,
-        CancellationToken? cancellationToken = default
+        CancellationToken cancellationToken = default
         );
 
     Task<TEntity> AddAsync(TEntity entity);
 
-    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entity);
+    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities);
 
     Task<TEntity> UpdateAsync(TEntity entity);
 
-    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entity);
+    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities);
 
     Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
 
-    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entity, bool permanent = false);
+    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false);
 }
